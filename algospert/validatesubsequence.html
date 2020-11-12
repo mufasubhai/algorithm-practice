@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>algoexpert</title>
+</head>
+
+<body>
+    <p><em>Psst: have a look at the JavaScript Console</em> 💁</p>
+    <script>
+        function isValidSubsequence(array, sequence) {
+            debugger
+            lg
+
+
+
+
+                sequence.forEach(el => {
+                    array.forEach((num, idx) => {
+                        if (num === el) {
+                            sequence.shift();
+                            array = array.slice(idx + 1, array.length - 1)
+                            break
+                        }
+                    })
+                })
+
+
+
+
+                return (sequence.length === 0);
+            }
+  
+    </script>
+</body>
+
+</html>

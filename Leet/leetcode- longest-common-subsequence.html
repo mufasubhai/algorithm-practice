@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>leetcode</title>
+</head>
+
+<body>
+    <p><em>Psst: have a look at the JavaScript Console</em> 💁</p>
+    <script>
+        var longestCommonSubsequence = function (text1, text2) {
+            let longest = 0;
+            
+            const test1Chars = subsequences(text1);
+            const test2Chars = subsequences(text2);
+
+            test1Chars.forEach(sub => {
+                if (test2Chars.includes(sub) && sub.length > longest) {
+                    longest = sub.length;
+                }
+            })
+            return longest
+            };
+
+            function subsequences(text) {
+                let subs = [];
+
+                for (let i = 0; i < text.length - 1; i++) {
+                    for (let j = i; j < text.length; j++) {
+                        subs.push(text.slice(i, j + 1))
+                    }
+                }
+
+                return subs;
+            }
+    </script>
+</body>
+
+</html>
