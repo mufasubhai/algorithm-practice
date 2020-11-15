@@ -9,32 +9,32 @@
 <body>
     <p><em>Psst: have a look at the JavaScript Console</em> 💁</p>
     <script>
-    class BinaryTree {
-        constructor(value) {
-            this.value = value;
-            this.left = null;
-            this.right = null;
-        }
-    }
+    // class BinaryTree {
+    //     constructor(value) {
+    //         this.value = value;
+    //         this.left = null;
+    //         this.right = null;
+    //     }
+    // }
 
-    function branchSums(root) {
-        let sums = [];
+    // function branchSums(root) {
+    //     let sums = [];
 
-        if (root === null) {
-            return sums;
-        } else {
-            sums.concat(root.value + branchSums(root.left))
-            sums.concat(root.value + branchSums(root.right))
-        }
-
-
-        return sums;
-        // Write your code here.
+    //     if (root === null) {
+    //         return sums;
+    //     } else {
+    //         sums.concat(root.value + branchSums(root.left))
+    //         sums.concat(root.value + branchSums(root.right))
+    //     }
 
 
+    //     return sums;
+    //     // Write your code here.
 
 
-    }
+
+
+    // }
 
     // need to define a helper function
     </script>
