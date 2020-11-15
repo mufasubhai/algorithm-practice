@@ -9,28 +9,24 @@
 <body>
     <p><em>Psst: have a look at the JavaScript Console</em> 💁</p>
     <script>
-        function isValidSubsequence(array, sequence) {
-            debugger
-            lg
+       function isValidSubsequence(array, sequence) {
+            let seqIdx = 0;
+            let arrayIdx = 0;
 
 
-
-
-                sequence.forEach(el => {
-                    array.forEach((num, idx) => {
-                        if (num === el) {
-                            sequence.shift();
-                            array = array.slice(idx + 1, array.length - 1)
-                            break
-                        }
-                    })
-                })
-
-
-
-
-                return (sequence.length === 0);
+            while (seqIdx < sequence.length - 1 && arrayIdx < array.length - 1) {
+                // debugger
+                for (let i = 0; i < array.length; i++) {
+                    if (array[i] === sequence[seqIdx]) {
+                        seqIdx++;
+                    }
+                }
             }
+
+            return (seqIdx === sequence.length)
+            // return seqIdx;
+        }
+
   
     </script>
 </body>
