@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>leetcode</title>
+</head>
+
+<body>
+    <p><em>Psst: have a look at the JavaScript Console</em> 💁</p>
+    <script>
+   function commonSubstring(a, b) {
+        // Write your code here
+        for (let i = 0; i < a.length; i++) {
+            commonPart(a[i], b[i]);
+        }
+    }
+
+    function commonPart(el1, el2) {
+        let common = false;
+        const chars1 = el1.split('');
+        const chars2 = el2.split('');
+        const chars1Obj = {};
+        const chars2Obj = {};
+        chars1.forEach(char => {
+            if (!chars1Obj[char]) {
+                chars1Obj[char] = true;
+            }
+        })
+
+        chars2.forEach(el => {
+            if (chars1Obj[el]) {
+                common = true;
+            }
+          })
+      
+
+
+        if (!common) {
+            console.log("NO")
+        } else {
+            console.log("YES")
+        }
+    }
+
+
+    function triplets(t,d) {
+      t.so
+    }
+
+
+    function minMoves(arr) {
+
+        let totalOnes = arr.reduce((total, num) => {
+            if (num === 1) {
+                return total + 1
+            }
+            else {
+                return total
+            }
+        }, 0)
+
+        let endIdx;
+        let moves = 0;
+        let sorted = false;
+
+        if (arr[0] === 1) {
+            endIdx = totalOnes - 1;
+
+            while (!sorted) {
+                sorted = true;
+                for (let i = 0; i <= endIdx; i++) {
+                    if (arr[i] === 0) {
+                        swap(i, i + 1, arr);
+                        moves++;
+                        sorted = false;
+                        break;
+                    }
+                }
+
+                for (let i = arr.length - 1; i > endIdx; i--) {
+                    if (arr[i] === 1) {
+                        swap(i, i - 1, arr);
+                        moves++;
+                        sorted = false;
+                        break;
+                    }
+                }
+            }
+
+        } else {
+            endIdx = arr.length - totalOnes;
+
+            while (!sorted) {
+                sorted = true;
+                for (let i = arr.length - 1 ; i >= endIdx; i--) {
+                    if (arr[i] === 1) {
+                        swap(i, i - 1, arr);
+                        moves++;
+                        sorted = false;
+                        break;
+                    }
+                }
+
+                for (let i = 0; i <= endIdx; i++) {
+                    if (arr[i] === 0) {
+                        swap(i, i + 1, arr);
+                        moves++;
+                        sorted = false;
+                        break;
+                    }
+                }
+            }
+        }
+
+        return moves;
+
+    }
+
+
+    function swap(a, b, arr) {
+        let placeHolder = arr[b];
+        arr[b] = arr[a];
+        arr[a] = placeHolder;
+    }
+
+</script>
+</body>
+
+</html>
