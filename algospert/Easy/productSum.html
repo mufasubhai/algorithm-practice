@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>leetcode</title>
+</head>
+
+<body>
+    <p><em>Psst: have a look at the JavaScript Console</em> 💁</p>
+    <script>
+
+        function productSum(array, depth = 1) {
+                let sum = 0;
+
+            // debugger
+
+                array.forEach(el => {
+                    if (Array.isArray(el)) {
+                        sum += productSum(el, depth + 1)
+                    } else {
+                        sum += el;
+                    }
+                })
+
+                return sum * depth;
+                // Write your code here.
+            }
+
+
+    </script>
+</body>
+
+</html>
