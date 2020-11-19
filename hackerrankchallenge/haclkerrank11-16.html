@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>HackerRank Chalenge</title>
+</head>
+
+<body>
+    <p><em>Psst: have a look at the JavaScript Console</em> 💁</p>
+    <script>
+
+        // question 1;
+        function getSequenceSum(i, j, k) {
+                let sum = 0;
+
+                while (i < j) {
+                    sum += i;
+                    i++;
+                }
+
+                while (j >= k) {
+                    sum += j;
+                    j--;
+                }
+
+                return sum;
+
+            }
+
+            //question 4;
+    function kthPerson(k, p, q) {
+
+        let currentIdx = 0;
+        let lastPassenger = 0;
+        let busPassengers = [];
+        debugger
+        q.forEach(trip => {
+            let busCount = 0;
+            lastPassenger = 0;
+            // let kth;
+            if (currentIdx >= p.length - 1) {
+                busPassengers.push(0);
+                return busPassengers;
+            }
+
+            while (busCount < k && currentIdx < p.length - 1) {
+                if (p[currentIdx] <= trip) {
+                    busCount++;
+                    currentIdx++;
+                    lastPassenger = currentIdx;
+                } else {
+                    currentIdx++
+                }
+            }
+
+
+            busPassengers.push(lastPassenger)
+
+        })
+
+        return busPassengers;
+        // Write your code here
+
+    }
+
+            // question 3
+           function twins(a, b) {
+                let twins = [];
+                // Write your code here
+                for (let i = 0; i < a.length; i++) {
+                    if (twinString(a[i], b[i])) {
+                        twins.push("Yes")
+                    } else {
+                        twins.push("No")
+                    }
+                }
+
+                return twins
+
+            }
+
+            function twinString(string1, string2) {
+                if (string1.length != string2.length) return false;
+
+                let countEven = {};
+                let countOdd = {};
+
+                for (let i = 0; i < string1.length; i++) {
+                    if (i % 2 === 0) {
+                        if (!countOdd[string1[i]]) {
+                            countOdd[string1[i]] = 1;
+                        } else {
+                            countOdd[string1[i]]++;
+                        }
+
+                        if (!countOdd[string2[i]]) {
+                            countOdd[string2[i]] = -1;
+                        } else {
+                            countOdd[string2[i]]--;
+                        }
+                    }
+
+                    if (i % 2 != 0) {
+                        if (!countEven[string1[i]]) {
+                            countEven[string1[i]] = 1;
+                        } else {
+                            countEven[string1[i]]++;
+                        }
+
+                        if (!countEven[string2[i]]) {
+                            countEven[string2[i]] = -1;
+                        } else {
+                            countEven[string2[i]]--;
+                        }
+                    }
+                }
+
+                const oddSwaps = Object.values(countOdd).every(el => el === 0)
+                const evenSwaps = Object.values(countEven).every(el => el === 0)
+
+                return (oddSwaps && evenSwaps);
+            }
+
+
+            
+
+    </script>
+</body>
+
+</html>
