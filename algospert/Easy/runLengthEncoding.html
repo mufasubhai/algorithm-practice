@@ -21,15 +21,22 @@
                         count++;
                         if (count === 9) {
                             encoded += `9${chars[currentIdx]}`
+                            debugger
                             count = 0;
                             currentIdx++
                         } else {
                             currentIdx++
                         }
                     } else {
-                        encoded += `${count}${chars[currentIdx]}`
-                        currentIdx++
-                        count = 1;
+                       if (count === 0) {
+                            currentIdx++;
+                            count = 1;
+                       } else {
+
+                           encoded += `${count}${chars[currentIdx]}`
+                           currentIdx++
+                           count = 1;
+                       }
                     }
 
                 }
