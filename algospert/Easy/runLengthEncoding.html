@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Run Length Encoding</title>
+</head>
+
+<body>
+    <p><em>Psst: have a look at the JavaScript Console</em> 🦾</p>
+    <script>
+        function runLengthEncoding(string) {
+                let encoded = "";
+                let chars = string.split('')
+                let count = 1;
+                let currentIdx = 0;
+
+                while (currentIdx < string.length) {
+
+                    if (chars[currentIdx] === chars[currentIdx + 1]) {
+                        count++;
+                        if (count === 9) {
+                            encoded += `9${chars[currentIdx]}`
+                            count = 0;
+                            currentIdx++
+                        } else {
+                            currentIdx++
+                        }
+                    } else {
+                        encoded += `${count}${chars[currentIdx]}`
+                        currentIdx++
+                        count = 1;
+                    }
+
+                }
+
+                return encoded;
+                // Write your code here.
+            }
+        
+
+
+    </script>
+</body>
+
+</html>
