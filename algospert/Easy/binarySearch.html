@@ -9,25 +9,33 @@
 <body>
     <p><em>Psst: have a look at the JavaScript Console</em> 💁</p>
     <script>
-	function binarySearch(array, target, remainder = 0) {
-            if (array.length === 0) return -1;
+    function binarySearch(array, target) {
+        if (array.length === 0) return -1;
 
-            let mid = Math.floor(array.length / 2)
-            debugger
+        let mid = Math.floor(array.length / 2);
 
-
-            if (array[mid] === target) {
-                return mid;
-            } else if (array[mid] > target) {
-                return binarySearch(array.splice(0, mid), target, 0)
-            } else if (array[mid] < target) {
-                return  binarySearch(array.splice(mid + 1, array.length - 1), target, mid)
-            } else {
-                return -1;
-            }
-
-
+        if (array[mid] === target) {
+            return mid;
         }
+
+        if (array[mid] > target) {
+            let leftSearch = binarySearch(array.splice(0, mid), target);
+            if (leftSearch === -1) {
+                return -1;
+            } else {
+                return leftSearch;
+            }
+        } else {
+            let rightSearch = binarySearch(array.splice(mid + 1, array.length), target)
+            if (rightSearch === -1) {
+                return -1;
+            } else {
+                return mid + 1 + rightSearch;
+            }
+        }
+
+    }
+
     </script>
 </body>
 
