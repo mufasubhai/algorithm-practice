@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>leetcode</title>
+</head>
+
+<body>
+    <p><em>Psst: have a look at the JavaScript Console</em> 💁</p>
+    <script>
+     
+        function asteroids(array) {
+
+            //If (array.all(el => (el < 0))) return array;
+            //If (array.all(el => (el > 0))) return array;
+
+
+            let newArray = [];
+            let indices = [];
+            let pointer = 0;
+
+            for (let i = 0; i < array.length; i++) {
+                if (array[i] < 0) indices.push(i);
+            }
+
+            if (indices.length === array.length || indices.length === 0) return array;
+
+
+            for (let i = 0; i < indices.length; i++) {
+                // we need to check if the element to the left is positive.
+                // if it is, we need to check if it is bigger or smaller
+                // we need to add the sliced version of the array to the new array.
+
+                let index = indices[i]
+                // debugger;
+                if (array[index - 1] > 0) {
+                    if (array[index - 1] > Math.abs(array[index])) {
+
+                    // console.log(Math.abs(array[index]))
+                    newArray = newArray.concat(array.splice(pointer, index)).concat(array.splice(index+1, array.length-1))
+                    pointer = index + 1
+                    } else if (array[index - 1] === Math.abs(array[index])) {
+                                        console.log(Math.abs(array[index]))
+
+                    newArray = newArray.concat(array.splice(pointer, index - 1));
+                    pointer = index + 1;
+                } else {
+                    // console.log(Math.abs(array[index]))
+                    let end = array[index]
+                    let test = array.splice(pointer, index - 1).concat(end)
+                    newArray = newArray.concat(test)
+                    pointer = index + 1;
+                 }
+                                    
+            }
+
+            }
+
+            let secondIndices = [];
+
+            for(let i = 0; i < newArray.length; i++) {
+                if (newArray[i] < 0) secondIndices.push(i);
+            }
+
+            // console.log(secondIndices);
+            if (secondIndices.length === array.length || secondIndices.length === 0) { return newArray } else { return asteroids(newArray)}
+
+
+        }
+
+
+    </script>
+</body>
+
+</html>

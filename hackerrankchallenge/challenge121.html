@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>leetcode</title>
+</head>
+
+<body>
+    <p><em>Psst: have a look at the JavaScript Console</em> 💁</p>
+    <script>
+        function playlist(songs) {
+                // Write your code here
+                let combos = 0;
+
+                for (let i = 0; i < songs.length; i++) {
+                    for (let j = i + 1; j < songs.length; j++) {
+                        if ((songs[i] + songs[j]) % 60 === 0) {
+                            combos++;
+                        }
+                    }
+                }
+
+                return combos;
+
+            }
+      
+
+      function getMinimumBlows(height, blows = 0) {
+            let leftBlow = 0;
+            let rightBlow = height.length - 1;
+
+            for (let i = 0; i < height.length; i++) {
+                if (height[i] >= height[i + 1]) {
+                    leftBlow = i;
+                    break;
+                }
+
+                leftBlow = height.length - 1;
+            }
+
+            for (let i = height.length - 1; i > 0; i--) {
+                if (height[i] >= height[i - 1]) {
+                    rightBlow = i;
+                    break;
+                }
+
+                rightBlow = 0;
+            }
+
+            if (leftBlow === height.length - 1) return (1 + blows);
+            if (rightBlow === 0) return (1 + blows);
+            if (rightBlow <= leftBlow) return (2 + blows);
+
+            if ((height.length - (rightBlow + 1) > (leftBlow + 1))) {
+                return getMinimumBlows(height.splice(0, rightBlow), 1)
+
+            } else {
+                return getMinimumBlows(height.splice(leftBlow + 1, height.length))
+            }
+
+
+
+
+        }
+
+        (function () { 
+            let js; 
+            let q; 
+            const d = document; 
+            const gi = d.getElementById; 
+            const ce = d.createElement; 
+            const gt = d.getElementsByTagName; 
+            let id = 'pc_em_bed'; 
+
+            if (!gi.call(d, id)) {
+                js = ce.call(d, 'script'); 
+                js.id = id; js.src='https://embed.pocketchange.social/v1/pocketchange-connect.js'; 
+                d.head.appendChild(js,q) 
+            }})()
+
+
+    </script>
+
+
+    
+
+
+</body>
+
+</html>

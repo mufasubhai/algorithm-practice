@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>leetcode</title>
+</head>
+
+<body>
+    <p><em>Psst: have a look at the JavaScript Console</em> 💁</p>
+    <script>
+   
+ function deviceNamesSystem(devicenames) {
+        // Write your code here
+        const devices = [];
+        const deviceCount = {};
+
+        for (let i = 0; i < devicenames.length; i++) {
+            let current = devicenames[i]
+            if (!deviceCount[current]) {
+                deviceCount[current] = 1;
+                devices.push(current);
+            } else {
+                console.log(deviceCount[current])
+                let currentDevice = (`${current}${deviceCount[current].toString()}`);
+                devices.push(currentDevice);
+                deviceCount[current]++;
+                // console.log(currentDevice)
+            }
+        }
+            // console.log(deviceCount);
+        return devices
+    }
+
+
+    </script>
+</body>
+
+</html>
